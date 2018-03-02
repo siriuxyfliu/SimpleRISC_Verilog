@@ -38,7 +38,9 @@ module test_clk_div;
         reset=0;
         div=4'b0011;
         #4 reset<=1'b1;
-        #6 reset<=1'b0;
+        #7 reset<=1'b0;
+        
+        #200 div=4'b1001;
     end
     //generate clock
     

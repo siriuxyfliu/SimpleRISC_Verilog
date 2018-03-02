@@ -28,18 +28,18 @@ module clock_divider(
     );
 reg [3:0] p_div;
 reg [3:0] n_div;
-
+assign clk_o= !(p_div[1] & n_div[1]);
 always @ (posedge clk_i)
 begin
     if (rst == 1) 
     begin
-        p_div<=4'b0000;
+        p_div<=4'b0001;
     end
     else
     begin
         if (p_div==div)
         begin
-            p_div<=4'b0000;
+            p_div<=4'b0001;
         end
         else
         begin
@@ -52,13 +52,13 @@ always @ (negedge clk_i)
 begin
     if (rst == 1) 
     begin
-        n_div<=4'b0000;
+        n_div<=4'b0001;
     end
     else
     begin
         if (n_div==div)
         begin
-            n_div<=4'b0000;
+            n_div<=4'b0001;
         end
         else
         begin
@@ -66,7 +66,7 @@ begin
         end
     end   
 end
-assign clk_o= p_div[1];
+
 
 endmodule
 
